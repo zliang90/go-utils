@@ -1,4 +1,4 @@
-package net
+package http
 
 import (
 	"bytes"
@@ -9,10 +9,10 @@ import (
 )
 
 var (
-	HttpClientTimeout uint = 30
+	ClientTimeout uint = 30
 )
 
-func HttpRequest(method, url string, headers map[string]string, body []byte) (resByte []byte, statusCode int, err error) {
+func Request(method, url string, headers map[string]string, body []byte) (resByte []byte, statusCode int, err error) {
 	if method == "" {
 		method = "GET"
 	}
@@ -41,7 +41,7 @@ func HttpRequest(method, url string, headers map[string]string, body []byte) (re
 	}
 
 	client := http.Client{
-		Timeout: time.Duration(HttpClientTimeout) * time.Second,
+		Timeout: time.Duration(ClientTimeout) * time.Second,
 	}
 
 	resp, err = client.Do(req)

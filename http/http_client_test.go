@@ -1,4 +1,4 @@
-package net
+package http
 
 import (
 	"fmt"
@@ -16,7 +16,7 @@ func TestHttpRequestPost(t *testing.T) {
 			"url": "http://127.0.0.1/omp"
 		}`)
 
-	res, _, err := HttpRequest("POST", "http://127.0.0.1:8082/api/v1/menus", headers, body)
+	res, _, err := Request("POST", "http://127.0.0.1:8082/api/v1/menus", headers, body)
 	if err != nil {
 		t.Error()
 	}
@@ -36,7 +36,7 @@ func TestHttpRequestPut(t *testing.T) {
 			}
 		}`)
 
-	res, _, err := HttpRequest("PUT", "http://127.0.0.1:8082/api/v1/menus/6", headers, body)
+	res, _, err := Request("PUT", "http://127.0.0.1:8082/api/v1/menus/6", headers, body)
 	if err != nil {
 		t.Error(err)
 	}
@@ -44,9 +44,9 @@ func TestHttpRequestPut(t *testing.T) {
 }
 
 func TestHttpRequestGET(t *testing.T) {
-	HttpClientTimeout = 5
+	ClientTimeout = 5
 
-	_, _, err := HttpRequest("GET", "http://127.0.0.1:8082/api/v1/menus", nil, nil)
+	_, _, err := Request("GET", "http://127.0.0.1:8082/api/v1/menus", nil, nil)
 
 	if err != nil {
 		t.Error(err)
@@ -54,7 +54,7 @@ func TestHttpRequestGET(t *testing.T) {
 }
 
 func TestHttpRequestDelete(t *testing.T) {
-	resp, _, err := HttpRequest("DELETE", "http://127.0.0.1:8082/api/v1/menus/6", nil, nil)
+	resp, _, err := Request("DELETE", "http://127.0.0.1:8082/api/v1/menus/6", nil, nil)
 
 	if err != nil {
 		t.Error(err)
