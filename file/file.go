@@ -58,7 +58,6 @@ func ToTrimString(path string) (string, error) {
 	return strings.TrimSpace(s), nil
 }
 
-// Contains 判断文件中是否包含sub字符串
 func Contains(path, sub string) (bool, error) {
 	lineSlice, err := ToLineSlice(path)
 	if err != nil {

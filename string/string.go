@@ -25,7 +25,6 @@ func Reverse(s string) (string, error) {
 	return buf.String(), nil
 }
 
-// ToSlice 字符串转数组
 func ToSlice(s string) []string {
 
 	var st []string

@@ -1,6 +1,7 @@
 package string
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -36,4 +37,6 @@ func TestToSlice(t *testing.T) {
 	if len(ss) == 0 {
 		t.Error("ToSlice() returns 0 elements in array")
 	}
+
+	fmt.Println(ss)
 }
