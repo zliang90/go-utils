@@ -12,8 +12,8 @@ const (
 	DefaultBufferSize = 4096
 )
 
-func IsExists(f string) bool {
-	_, err := os.Stat(f)
+func IsExists(path string) bool {
+	_, err := os.Stat(path)
 	return err == nil || os.IsExist(err)
 }
 
@@ -27,8 +27,8 @@ func ToString(f string) (string, error) {
 	return string(b), nil
 }
 
-func ToLineSlice(filePath string) ([]string, error) {
-	f, err := os.Open(filePath)
+func ToLineSlice(path string) ([]string, error) {
+	f, err := os.Open(path)
 
 	if err != nil {
 		return nil, err
@@ -49,8 +49,8 @@ func ToLineSlice(filePath string) ([]string, error) {
 	return lineSlice, nil
 }
 
-func ToTrimString(f string) (string, error) {
-	s, err := ToString(f)
+func ToTrimString(path string) (string, error) {
+	s, err := ToString(path)
 	if err != nil {
 		return "", err
 	}
@@ -59,8 +59,8 @@ func ToTrimString(f string) (string, error) {
 }
 
 // Contains 判断文件中是否包含sub字符串
-func Contains(filePath, sub string) (bool, error) {
-	lineSlice, err := ToLineSlice(filePath)
+func Contains(path, sub string) (bool, error) {
+	lineSlice, err := ToLineSlice(path)
 	if err != nil {
 		return false, err
 	}
